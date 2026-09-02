@@ -32,9 +32,10 @@ jobs:
 
       - name: Fix Android Gradle versions
         run: |
-          sed -i 's/gradle-8.4-bin.zip/gradle-8.14-bin.zip/g' extracted/android/gradle/wrapper/gradle-wrapper.properties
-          sed -i 's/com.android.application" version "8.3.2"/com.android.application" version "8.11.1"/g' extracted/android/settings.gradle
-
+          sed -i 's/gradle-[0-9.]*-bin.zip/gradle-8.14-bin.zip/g' extracted/android/gradle/wrapper/gradle-wrapper.properties
+          sed -i 's/com.android.application" version "[0-9.]*"/com.android.application" version "8.11.1"/g' extracted/android/settings.gradle
+          sed -i 's/org.jetbrains.kotlin.android" version "[0-9.]*"/org.jetbrains.kotlin.android" version "2.2.20"/g' extracted/android/settings.gradle
+          
       - name: Flutter pub get
         working-directory: extracted
         run: flutter pub get
