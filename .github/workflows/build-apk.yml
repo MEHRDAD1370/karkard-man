@@ -19,6 +19,10 @@ jobs:
           unzip -q karkard_man_android_cloud_build.zip -d extracted
           cp -r extracted/karkard_man_flutter/. extracted/
 
+      - name: Fix Gradle version
+        run: |
+          sed -i 's/gradle-8.4-bin.zip/gradle-8.14-bin.zip/g' extracted/android/gradle/wrapper/gradle-wrapper.properties
+
       - name: Setup Flutter
         uses: subosito/flutter-action@v2
         with:
