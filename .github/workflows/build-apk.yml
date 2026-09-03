@@ -14,11 +14,6 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
 
-      - name: Extract project
-        run: |
-          unzip -q karkard_man_android_cloud_build.zip -d extracted
-          cp -r extracted/karkard_man_flutter/. extracted/
-
       - name: Setup Flutter
         uses: subosito/flutter-action@v2
         with:
@@ -26,7 +21,6 @@ jobs:
           cache: true
 
       - name: Prepare Android project
-        working-directory: extracted
         run: |
           flutter create --platforms=android .
 
@@ -42,16 +36,14 @@ jobs:
           sed -i 's/versionName flutterVersionName/versionName "1.0.0"/g' extracted/android/app/build.gradle
           
       - name: Flutter pub get
-        working-directory: extracted
         run: flutter pub get
 
       - name: Build APK
-        working-directory: extracted
         run: flutter build apk --release
 
       - name: Upload APK
         uses: actions/upload-artifact@v4
         with:
           name: karkard-man-release-apk
-          path: extracted/build/app/outputs/flutter-apk/app-release.apk
+          path: build/app/outputs/flutter-apk/app-release.apk
           if-no-files-found: error
