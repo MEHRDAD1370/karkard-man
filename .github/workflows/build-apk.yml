@@ -23,16 +23,7 @@ jobs:
       - name: Prepare Android project
         run: |
           flutter create --platforms=android --project-name karkard_man .
-
-      - name: Fix Android Gradle versions
-        run: |
-          echo "Skip gradle fix"
-
-      - name: Fix Flutter version variables
-        run: |
-          sed -i 's/versionCode flutterVersionCode.toInteger()/versionCode 1/g' android/app/build.gradle
-          sed -i 's/versionName flutterVersionName/versionName "1.0.0"/g' android/app/build.gradle
-          
+              
       - name: Flutter pub get
         run: flutter pub get
 
