@@ -1,0 +1,18 @@
+name: karkard_man
+description: اپلیکیشن شخصی ثبت ورود و خروج، کارکرد و اضافه کاری
+publish_to: "none"
+version: 1.0.0+1
+
+environment:
+  sdk: ">=3.3.0 <4.0.0"
+
+dependencies:
+  flutter:
+    sdk: flutter
+  shared_preferences: ^2.2.3
+  http: ^1.2.2
+
+flutter:
+  uses-material-design: true
+  assets:
+    - assets/karkard_man_logo.png
