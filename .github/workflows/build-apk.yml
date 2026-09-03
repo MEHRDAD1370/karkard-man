@@ -22,7 +22,7 @@ jobs:
 
       - name: Prepare Android project
         run: |
-          flutter create --platforms=android .
+          flutter create --platforms=android --project-name karkard_man .
 
       - name: Fix Android Gradle versions
         run: |
